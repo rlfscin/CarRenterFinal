@@ -1,0 +1,42 @@
+﻿#home{
+    float: left;
+    width: 100%;
+}
+
+#ddCity {
+    display: block;
+    margin: 20px;
+}
+
+.car{
+    float: left;
+    width: 280px;
+    height: 142px;
+    padding: 20px;
+    margin: 0;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    margin-left: 50px;
+    list-style: none;
+    border: 2px solid black;
+    border-radius: 2px;
+    background-color: #ccc;
+    
+}
+.car span{
+    float: left;
+    margin: 10px;
+    margin-left: 0;
+    margin-right: 20px;
+    
+}
+
+.imgHomeCar{
+    float: left;
+    margin-right:20px;
+    width: 152px;
+    height: 140px;
+    border: 1px solid gray;
+
+}
+
