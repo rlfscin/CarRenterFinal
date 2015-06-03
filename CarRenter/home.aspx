@@ -57,35 +57,23 @@
                 </div>
             </header>
             <section id="home" class="content">
+
                 <asp:DropDownList ID="ddCity" runat="server">
                 </asp:DropDownList>
-                <asp:BulletedList ID="lstCars" runat="server">
-                </asp:BulletedList>
+                <asp:Repeater runat="server" ID="lstCars">
+                    <HeaderTemplate><ul></HeaderTemplate>
+                    <ItemTemplate>
+                        <li class="car">
+                            <a href="cars.apsx?carId=<%#Eval("CarId")%>">
+                                <img class="imgHomeCar" src="<%#Eval("Image") %>"/>
+                                <span> <%#Eval("Name") %></span>
+                                <span class="info"><%#Eval("Available") %></span>
+                            </a>
+                        </li>
+                    </ItemTemplate>
+                    <FooterTemplate></ul></FooterTemplate>
+                </asp:Repeater>
                 <ol>
-                    <li class="car">
-                        <a href="#">
-                            <img class="imgHomeCar" src="car/ferrari.jpg" />
-                            <span>Ferrari</span>
-                            <span class="info">Engine: 1.0</span>
-                            <span class="info">Avalible</span>
-                        </a>
-                    </li>
-                    <li class="car">
-                        <a href="#">
-                            <img class="imgHomeCar" src="car/ferrari.jpg" />
-                            <span>Ferrari</span>
-                            <span class="info">Engine: 1.0</span>
-                            <span class="info">Avalible</span>
-                        </a>
-                    </li>
-                    <li class="car">
-                        <a href="#">
-                            <img class="imgHomeCar" src="car/ferrari.jpg" />
-                            <span>Ferrari</span>
-                            <span class="info">Engine: 1.0</span>
-                            <span class="info">Avalible</span>
-                        </a>
-                    </li>
                     <li class="car">
                         <a href="#">
                             <img class="imgHomeCar" src="car/ferrari.jpg" />

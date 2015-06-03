@@ -8,6 +8,10 @@
     margin: 20px;
 }
 
+ul{
+    padding: 0;
+}
+
 .car{
     float: left;
     width: 280px;

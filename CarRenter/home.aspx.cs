@@ -41,18 +41,11 @@ namespace CarRenter
             }
 
 
-            //using (var contex = new CarRenterContex())
-            if(true)
+            using (var contex = new CarRenterContext())
             {
-                //lstCars cars = contex.Cars();
-                //foreach (car car in cars)
-                if(true)
-                {
-                    ListItem li = new ListItem();
-                    li.Attributes.Add("class", "car");
-                    li.Text = "<h1>Rubens</h1>";
-                    //lstCars.Items.Add(li);
-                }
+                var cars = contex.Cars.ToList();
+                lstCars.DataSource = cars;
+                lstCars.DataBind();
             }
 
         }
