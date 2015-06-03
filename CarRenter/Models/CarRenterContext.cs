@@ -10,7 +10,7 @@ namespace CarRenter.Models
     {
         public CarRenterContext() : base("name=carRenter")
         {
-            Database.SetInitializer<CarRenterContext>(new DropCreateDatabaseIfModelChanges<CarRenterContext>());
+            
         }
 
         public virtual DbSet<Car> Cars { get; set; }
