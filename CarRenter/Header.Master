@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Header.master.cs" Inherits="CarRenter.Header" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="style/header.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="scripts/menu.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="headerExtended">
+        <section id="body">
+            <header>
+                <div id="header">
+                    <img id="imgLogo" src="img/logo.png" />
+                    <h1 id="txtLogo">Car Renter</h1>
+                    <ol id="menu">
+                        <asp:Panel runat="server" ID="loggedSpace"></asp:Panel>
+                        <li id="liHome"><a href="home.aspx"><div class="dropMenu">HOME</div></a></li>
+                        <asp:Panel runat="server" ID="logged">
+                        <li id="liCar">
+                            <div class="dropMenu">
+                                CARS
+                                <div class="hide">
+                                    <a href="registerCar.aspx">Register</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="liRents">
+                            <div class="dropMenu">
+                                RENTS<div class="hide">
+                                    <a href="rentCar.aspx">Rent</a>
+                                    <a href="reternCar.aspx">Return</a>
+                                </div>
+                            </div>
+                        </li>
+                        </asp:Panel>
+                        <li id="liLogin">
+                            <div class="dropMenu">
+                                LOG IN<div class="hide">
+                                    <asp:Panel runat="server" ID="singIn">
+                                        <a href="signIn.aspx">Sign In</a>
+                                    </asp:Panel>
+                                    <asp:Panel runat="server" ID="singOut">
+                                        <a href="home.aspx">Sign Out</a>
+                                    </asp:Panel>
+                                    <a href="singUp.aspx">Sign Up</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </header>
+            <section id="content">
+                <asp:ContentPlaceHolder ID="Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </section>
+        </section>
+        
+    </div>
+    </form>
+</body>
+</html>

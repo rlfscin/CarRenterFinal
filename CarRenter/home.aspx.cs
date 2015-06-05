@@ -12,21 +12,6 @@ namespace CarRenter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                singIn.Visible = true;
-                singOut.Visible = false;
-                loggedSpace.Visible = true;
-                logged.Visible = false;
-            }
-            else
-            {
-                singIn.Visible = false;
-                singOut.Visible = true;
-                loggedSpace.Visible = false;
-                logged.Visible = true;
-            }
-
             //cities
             using (var context = new CarRenterContext())
             {

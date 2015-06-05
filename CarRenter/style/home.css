@@ -1,9 +1,4 @@
-﻿#home{
-    float: left;
-    width: 100%;
-}
-
-#ddCity {
+﻿#Content_ddCity {
     display: block;
     margin: 20px;
 }

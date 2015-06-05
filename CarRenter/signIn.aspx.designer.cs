@@ -10,25 +10,24 @@
 namespace CarRenter {
     
     
-    public partial class home {
-
+    public partial class signIn {
         
         /// <summary>
-        /// ddCity control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCity;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// lstCars control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater lstCars;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
     }
 }

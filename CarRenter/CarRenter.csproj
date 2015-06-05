@@ -68,6 +68,7 @@
       <DependentUpon>CarRenter.mdf</DependentUpon>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="Header.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -79,12 +80,12 @@
     <Content Include="car\ferrari.jpg" />
     <Content Include="Global.asax" />
     <Content Include="home.aspx" />
-    <Content Include="home.html" />
     <Content Include="img\background.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="scripts\home.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\menu.js" />
+    <Content Include="signIn.aspx" />
     <Content Include="style\header.css" />
     <Content Include="style\home.css" />
     <Content Include="Web.config" />
@@ -92,6 +93,13 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Header.Master.cs">
+      <DependentUpon>Header.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Header.Master.designer.cs">
+      <DependentUpon>Header.Master</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
@@ -106,6 +114,13 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="signIn.aspx.cs">
+      <DependentUpon>signIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="signIn.aspx.designer.cs">
+      <DependentUpon>signIn.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
