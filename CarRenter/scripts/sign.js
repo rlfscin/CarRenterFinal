@@ -3,11 +3,11 @@
     $("#Content_chkOtherCity").change(function () {
         if ($(this).is(":checked")) {
             $("#Content_txtOtherCity").removeAttr('disabled');
-            $("#Content_ddlCity").attr('disabled', 'disabled');
+            $("#Content_drpCity").attr('disabled', 'disabled');
         }
         else {
             $("#Content_txtOtherCity").attr('disabled', 'disabled');
-            $("#Content_ddlCity").removeAttr('disabled');
+            $("#Content_drpCity").removeAttr('disabled');
         }
     });
 });

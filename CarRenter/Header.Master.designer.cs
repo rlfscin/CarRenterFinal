@@ -76,6 +76,15 @@ namespace CarRenter {
         protected global::System.Web.UI.WebControls.LinkButton btnSignout;
         
         /// <summary>
+        /// signUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel signUp;
+        
+        /// <summary>
         /// Content control.
         /// </summary>
         /// <remarks>

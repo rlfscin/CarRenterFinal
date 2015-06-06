@@ -50,7 +50,10 @@
                                         <asp:LinkButton runat="server" ID="btnSignout" OnClick="btnSignout_Click">Sign Out</asp:LinkButton>
                                         <%--<a href="home.aspx">Sign Out</a>--%>
                                     </asp:Panel>
-                                    <a href="singUp.aspx">Sign Up</a>
+                                    <asp:Panel runat="server" ID="signUp">
+                                        <a href="singUp.aspx">Sign Up</a>
+                                    </asp:Panel>
+                                    
                                 </div>
                             </div>
                         </li>

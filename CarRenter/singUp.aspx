@@ -34,7 +34,7 @@
                     <label for="Content_city">City: </label>
                 </td>
                 <td>
-                    <asp:DropDownList runat="server" ID="ddlCity"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="drpCity"></asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button runat="server" ID="btnLogin" Text="Register"/>
+                    <asp:Button runat="server" ID="btnRegister" Text="Register" OnClick="btnRegister_Click"/>
                 </td>
             </tr>
             <tr>

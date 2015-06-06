@@ -28,6 +28,7 @@ namespace CarRenter
             singIn.Visible = !isLogged;
             loggedSpace.Visible = !isLogged;
 
+            signUp.Visible = isLogged;
             signOut.Visible = isLogged;
             logged.Visible = isLogged;
         }

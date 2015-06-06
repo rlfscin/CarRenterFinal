@@ -34,12 +34,12 @@ namespace CarRenter
                 DateTime returnDate = cldReturnDate.SelectedDate;
 
                 // Get current city id
-                int cityId = GetCity(Int32.Parse(Session["LoggedInId"].ToString()));
+                int cityId = GetCityID(Int32.Parse(Session["LoggedInId"].ToString()));
 
                 // Add a new rental and update car's availability
                 using (var ctx = new CarRenterContext())
                 {
-                    Rental r = new Rental();
+                    Rental r = ctx.Rentals.Create();
                     r.CarId = carId;
                     r.CityId = cityId;
                     r.RentDate = DateTime.Now;
@@ -56,33 +56,34 @@ namespace CarRenter
             catch (Exception) { }
         }
 
-        private void LoadCars(int carId = 0)
+        private void LoadCars()
         {
-            List<Car> cars = null;
-
             // Get current car's city id
-            int cityId = this.GetCity(Int32.Parse(Session["LoggedInId"].ToString()));
+            int cityId = this.GetCityID(Int32.Parse(Session["LoggedInId"].ToString()));
 
             using (var ctx = new CarRenterContext())
             {
-                cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available == true).ToList();
+                var cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available == true).ToList();
+
+                foreach (var car in cars)
+                {
+                    ListItem li = new ListItem();
+                    li.Text = car.Name;
+                    li.Value = car.CarId.ToString();
+
+                    drpCar.Items.Add(li);
+                }
+
+                if (cars != null)
+                {
+                    imgCar.ImageUrl = cars[0].Image;
+                    lblCar.Text = cars[0].Name;
+                    lblStatus.Text = cars[0].Available ? "Available" : "Unavailable";
+                }
             }
-
-            foreach (var car in cars)
-            {
-                ListItem li = new ListItem();
-                li.Text = car.Name;
-                li.Value = car.CarId.ToString();
-
-                drpCar.Items.Add(li);
-            }
-
-            imgCar.ImageUrl = cars[0].Image;
-            lblCar.Text = cars[0].Name;
-            lblStatus.Text = cars[0].Available ? "Available" : "Unavailable";
         }
 
-        private int GetCity(int agencyId)
+        private int GetCityID(int agencyId)
         {
             using (var ctx = new CarRenterContext())
             {
