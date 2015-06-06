@@ -1,12 +1,8 @@
-﻿#Content_ddCity {
+﻿#Content_drpCar {
     display: block;
-    margin: 20px;
+    margin: auto;
+    margin-top: -155px;
 }
-
-ul{
-    padding: 0;
-}
-
 .car{
     float: left;
     width: 280px;
@@ -14,19 +10,12 @@ ul{
     padding: 20px;
     margin: 0;
     margin-bottom: 0px;
-    margin-top: 20px;
+    margin-top: -208px;
     margin-left: 50px;
     list-style: none;
     border: 2px solid black;
     border-radius: 2px;
     background-color: #ccc;
-    
-}
-.car span{
-    float: left;
-    margin: 10px;
-    margin-left: 0;
-    margin-right: 20px;
     
 }
 
@@ -38,3 +27,14 @@ ul{
     border: 1px solid gray;
 }
 
+td{
+    text-align: center;
+    padding: 10px;
+}
+h2{
+    text-align: center;
+}
+
+#content > table{
+    margin-top: 50px;
+}
