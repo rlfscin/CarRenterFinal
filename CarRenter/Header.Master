@@ -34,8 +34,8 @@
                         <li id="liRents">
                             <div class="dropMenu">
                                 RENTS<div class="hide">
-                                    <a href="rentCar.aspx">Rent</a>
-                                    <a href="returnCar.aspx">Return</a>
+                                    <a href="rent.aspx">Rent</a>
+                                    <a href="return.aspx">Return</a>
                                 </div>
                             </div>
                         </li>
