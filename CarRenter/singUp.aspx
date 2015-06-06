@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="signIn.aspx.cs" Inherits="CarRenter.signIn" %>
-<%@ MasterType VirtualPath="~/Header.Master" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="singUp.aspx.cs" Inherits="CarRenter.singUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="style/sign.css" rel="stylesheet" />
+    <script src="scripts/sign.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div id="box">
         <table>
             <tr>
                 <td colspan="2">
-                    <h2>Sign In</h2>
+                    <h2>Sign UP</h2>
                 </td>
             </tr>
             <tr>
@@ -30,8 +30,24 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <label for="Content_city">City: </label>
+                </td>
+                <td>
+                    <asp:DropDownList runat="server" ID="ddlCity"></asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:CheckBox runat="server" Text="Other City" ID="chkOtherCity"/>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="txtOtherCity"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
-                    <asp:Button runat="server" ID="btnLogin" Text="Login" OnClick="btnLogin_Click" />
+                    <asp:Button runat="server" ID="btnLogin" Text="Register"/>
                 </td>
             </tr>
             <tr>

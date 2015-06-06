@@ -99,9 +99,12 @@
     <Content Include="scripts\home.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\menu.js" />
+    <Content Include="scripts\sign.js" />
     <Content Include="signIn.aspx" />
+    <Content Include="singUp.aspx" />
     <Content Include="style\header.css" />
     <Content Include="style\home.css" />
+    <Content Include="style\sign.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +137,13 @@
     </Compile>
     <Compile Include="signIn.aspx.designer.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="singUp.aspx.cs">
+      <DependentUpon>singUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="singUp.aspx.designer.cs">
+      <DependentUpon>singUp.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
