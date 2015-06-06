@@ -1,0 +1,23 @@
+﻿#box {
+    margin: auto;
+    margin-top: 50px;
+    width: 300px;
+    background-color: #ccc;
+    border: 1px solid #aaa;
+    padding: 20px;
+}
+
+td{
+    padding: 10px;
+}
+input{
+    margin-left: 20px;
+}
+
+#error{
+    color: red;
+}
+
+input[type="submit"]{
+    float: right;
+}
