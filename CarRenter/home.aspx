@@ -10,7 +10,7 @@
         <HeaderTemplate><ul></HeaderTemplate>
         <ItemTemplate>
             <li class="car">
-                <a href="cars.apsx?carId=<%#Eval("CarId")%>">
+                <a href="rent.aspx?carId=<%#Eval("CarId")%>">
                     <img class="imgHomeCar" src="<%#Eval("Image") %>"/>
                     <span> <%#Eval("Name") %></span>
                     <span class="info"><%#Eval("Available") %></span>
