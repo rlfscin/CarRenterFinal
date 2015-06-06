@@ -1,5 +1,7 @@
-/CarRenter/bin/
-/CarRenter/obj/
+*.dll
+*.suo
+*.pdb
+
 
 # Windows image file caches
 Thumbs.db
