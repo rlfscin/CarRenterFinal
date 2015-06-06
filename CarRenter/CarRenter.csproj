@@ -98,6 +98,7 @@
     <Content Include="img\logo.png" />
     <Content Include="registerCar.aspx" />
     <Content Include="rent.aspx" />
+    <Content Include="return.aspx" />
     <Content Include="scripts\home.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\menu.js" />
@@ -107,6 +108,7 @@
     <Content Include="style\header.css" />
     <Content Include="style\home.css" />
     <Content Include="style\rent.css" />
+    <Content Include="style\return.css" />
     <Content Include="style\sign.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -147,6 +149,13 @@
     </Compile>
     <Compile Include="rent.aspx.designer.cs">
       <DependentUpon>rent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="return.aspx.cs">
+      <DependentUpon>return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="return.aspx.designer.cs">
+      <DependentUpon>return.aspx</DependentUpon>
     </Compile>
     <Compile Include="signIn.aspx.cs">
       <DependentUpon>signIn.aspx</DependentUpon>

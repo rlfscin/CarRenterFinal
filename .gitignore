@@ -50,6 +50,13 @@ Temporary Items
 *.dll
 CarRenter/bin/CarRenter.dll
 *.pdb
+<<<<<<< HEAD
 *.suo
 *.dll
 *.dll
+=======
+*.dll
+*.cache
+*.pdb
+*.cache
+>>>>>>> origin/master

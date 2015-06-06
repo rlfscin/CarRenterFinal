@@ -1,0 +1,37 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	.gitignore
+	CarRenter/App_Data/CarRenter.mdf
+	CarRenter/App_Data/CarRenter_log.ldf
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 3 and 2 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   CarRenter.v12.suo
+#	modified:   CarRenter/CarRenter.csproj
+#	modified:   CarRenter/Header.Master
+#	modified:   CarRenter/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	new file:   CarRenter/return.aspx
+#	new file:   CarRenter/return.aspx.cs
+#	new file:   CarRenter/return.aspx.designer.cs
+#	new file:   CarRenter/search.aspx
+#	new file:   CarRenter/search.aspx.cs
+#	new file:   CarRenter/search.aspx.designer.cs
+#	new file:   CarRenter/style/return.css
+#
+
