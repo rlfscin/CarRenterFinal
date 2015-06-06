@@ -19,14 +19,7 @@ namespace CarRenter
 
             if (!Page.IsPostBack)
             {
-                if (Request.QueryString["carId"] != null)
-                {
-                    LoadCars(Int32.Parse(Request.QueryString["carId"].ToString()));
-                }
-                else
-                {
-                    LoadCars();
-                }
+                LoadCars();
             }
         }
 
@@ -73,8 +66,6 @@ namespace CarRenter
             using (var ctx = new CarRenterContext())
             {
                 cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available == true).ToList();
-
-                cars = carId != 0 ? cars.Where(c => c.CarId == carId).ToList() : cars;
             }
 
             foreach (var car in cars)
@@ -85,6 +76,10 @@ namespace CarRenter
 
                 drpCar.Items.Add(li);
             }
+
+            imgCar.ImageUrl = cars[0].Image;
+            lblCar.Text = cars[0].Name;
+            lblStatus.Text = cars[0].Available ? "Available" : "Unavailable";
         }
 
         private int GetCity(int agencyId)
@@ -92,6 +87,23 @@ namespace CarRenter
             using (var ctx = new CarRenterContext())
             {
                 return ctx.Agencies.Where(a => a.AgencyId == agencyId).Select(a => a.CityId).FirstOrDefault();
+            }
+        }
+
+        protected void drpCar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                int carId = Int32.Parse(drpCar.SelectedValue);
+
+                var car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
+
+                if (car != null)
+                {
+                    imgCar.ImageUrl = car.Image;
+                    lblCar.Text = car.Name;
+                    lblStatus.Text = car.Available ? "Available" : "Unavailable";
+                }
             }
         }
     }

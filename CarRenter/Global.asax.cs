@@ -9,8 +9,6 @@ namespace CarRenter
 {
     public class Global : System.Web.HttpApplication
     {
-        public int CurrentCityId { get; set; }
-
         protected void Application_Start(object sender, EventArgs e)
         {
         }
