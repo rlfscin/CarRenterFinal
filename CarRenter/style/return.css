@@ -1,0 +1,39 @@
+﻿#Content_drpCar {
+    display: block;
+    margin: auto;
+}
+.car{
+    float: left;
+    width: 280px;
+    height: 142px;
+    margin: 0;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    margin-left: 50px;
+    list-style: none;
+    border: 2px solid black;
+    border-radius: 2px;
+    background-color: #ccc;
+    
+}
+
+.imgHomeCar{
+    float: left;
+    margin-right:20px;
+    width: 152px;
+    height: 140px;
+    border: 1px solid gray;
+}
+
+td{
+    text-align: center;
+    padding: 10px;
+}
+h2{
+    text-align: center;
+}
+
+#content > table{
+    margin: auto;
+    margin-top: 50px;
+}

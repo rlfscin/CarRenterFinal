@@ -50,3 +50,7 @@ Temporary Items
 *.dll
 CarRenter/bin/CarRenter.dll
 *.pdb
+*.dll
+*.cache
+*.pdb
+*.cache
