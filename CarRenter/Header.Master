@@ -27,6 +27,7 @@
                             <div class="dropMenu">
                                 CARS
                                 <div class="hide">
+                                    <a href="search.aspx">Search</a>
                                     <a href="registerCar.aspx">Register</a>
                                 </div>
                             </div>

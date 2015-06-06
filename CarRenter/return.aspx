@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="return.aspx.cs" Inherits="CarRenter._return" %>
+﻿<%@ Page Title="Return Car" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="return.aspx.cs" Inherits="CarRenter._return" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="style/return.css" rel="stylesheet" />
 </asp:Content>
