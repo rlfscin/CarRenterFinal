@@ -50,3 +50,6 @@ Temporary Items
 *.dll
 CarRenter/bin/CarRenter.dll
 *.pdb
+*.suo
+*.dll
+*.dll
