@@ -67,6 +67,20 @@
     <Content Include="App_Data\CarRenter_log.ldf">
       <DependentUpon>CarRenter.mdf</DependentUpon>
     </Content>
+    <Content Include="car\astonmartin.jpg" />
+    <Content Include="car\audi.JPG" />
+    <Content Include="car\bmw.jpg" />
+    <Content Include="car\camaro.jpg" />
+    <Content Include="car\chrisler.jpg" />
+    <Content Include="car\fusion.jpg" />
+    <Content Include="car\golf.jpg" />
+    <Content Include="car\jeep.jpg" />
+    <Content Include="car\lamborghini.jpg" />
+    <Content Include="car\mclaren.jpg" />
+    <Content Include="car\mercedes.jpg" />
+    <Content Include="car\porsche.jpg" />
+    <Content Include="car\ranger.jpg" />
+    <Content Include="car\rangerover.jpg" />
     <Content Include="packages.config" />
     <Content Include="Header.Master" />
     <None Include="Web.Debug.config">

@@ -12,27 +12,42 @@ namespace CarRenter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //cities
-            using (var context = new CarRenterContext())
+            if (!Page.IsPostBack)
             {
-                var cities = context.Cities;
+                this.LoadCities();
+                this.LoadCars(Convert.ToInt32(ddCity.SelectedValue));
+            }
+        }
+
+        private void LoadCars(int cityId)
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                lstCars.DataSource = ctx.Cars.Where(c => c.CityId == cityId).ToList();
+                lstCars.DataBind();
+            }
+        }
+
+        private void LoadCities()
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                var cities = ctx.Cities.ToList();
+
                 foreach (var city in cities)
                 {
                     ListItem li = new ListItem();
                     li.Text = city.Name;
                     li.Value = city.CityId.ToString();
+
                     ddCity.Items.Add(li);
                 }
             }
+        }
 
-
-            using (var contex = new CarRenterContext())
-            {
-                var cars = contex.Cars.ToList();
-                lstCars.DataSource = cars;
-                lstCars.DataBind();
-            }
-
+        protected void ddCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadCars(Convert.ToInt32(ddCity.SelectedValue));
         }
     }
 }

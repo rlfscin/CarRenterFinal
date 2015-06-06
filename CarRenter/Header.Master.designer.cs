@@ -58,21 +58,30 @@ namespace CarRenter {
         protected global::System.Web.UI.WebControls.Panel singIn;
         
         /// <summary>
-        /// singOut control.
+        /// signOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel singOut;
+        protected global::System.Web.UI.WebControls.Panel signOut;
         
         /// <summary>
-        /// ContentPlaceHolder control.
+        /// btnSignout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder;
+        protected global::System.Web.UI.WebControls.LinkButton btnSignout;
+        
+        /// <summary>
+        /// Content control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
     }
 }

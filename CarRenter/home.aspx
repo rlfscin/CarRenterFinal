@@ -5,8 +5,7 @@
     <script src="scripts/home.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <asp:DropDownList ID="ddCity" runat="server">
-    </asp:DropDownList>
+    <asp:DropDownList ID="ddCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddCity_SelectedIndexChanged" />
     <asp:Repeater runat="server" ID="lstCars">
         <HeaderTemplate><ul></HeaderTemplate>
         <ItemTemplate>

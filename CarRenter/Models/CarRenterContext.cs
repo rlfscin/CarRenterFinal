@@ -10,7 +10,6 @@ namespace CarRenter.Models
     {
         public CarRenterContext() : base("name=carRenter")
         {
-            
         }
 
         public virtual DbSet<Car> Cars { get; set; }

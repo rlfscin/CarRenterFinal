@@ -11,20 +11,34 @@ namespace CarRenter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Session["LoggedInId"] == null)
             {
-                singIn.Visible = true;
-                singOut.Visible = false;
-                loggedSpace.Visible = true;
-                logged.Visible = false;
+                // Not logged
+                this.ShowMenus(false);
             }
             else
             {
-                singIn.Visible = false;
-                singOut.Visible = true;
-                loggedSpace.Visible = false;
-                logged.Visible = true;
+                // Logged
+                this.ShowMenus(true);
             }
+        }
+
+        private void ShowMenus(bool isLogged)
+        {
+            singIn.Visible = !isLogged;
+            loggedSpace.Visible = !isLogged;
+
+            signOut.Visible = isLogged;
+            logged.Visible = isLogged;
+        }
+
+        protected void btnSignout_Click(object sender, EventArgs e)
+        {
+            // Clear session
+            Session.Clear();
+
+            // Redirect to home page
+            Response.Redirect("home.aspx");
         }
     }
 }
