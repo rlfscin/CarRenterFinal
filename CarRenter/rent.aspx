@@ -3,7 +3,8 @@
     <link href="style/rent.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <table>
+    <asp:Panel runat="server" ID="pnlCars"> 
+        <table>
         <tr>
             <td><h2>Car: </h2></td>
             <td><h2>Return date: </h2></td>
@@ -31,5 +32,10 @@
             </td>
         </tr>
 
-    </table>
+        </table>
+    </asp:Panel>
+    
+    <asp:Panel runat="server" ID="pnlNoCars" Visible="false">
+        <asp:Label runat="server" ID="lblMessage"></asp:Label>
+    </asp:Panel>
 </asp:Content>

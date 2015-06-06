@@ -10,15 +10,33 @@ namespace CarRenter
 {
     public partial class rent : System.Web.UI.Page
     {
+        private int AgencyID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["LoggedInId"] == null)
             {
+                // Return to home page
                 Response.Redirect("home.aspx");
+            }
+            else
+            {
+                // Store AgencyID value into a local variable coming from user's session
+                this.AgencyID = Int32.Parse(Session["LoggedInId"].ToString());
             }
 
             if (!Page.IsPostBack)
             {
+                if (!this.ExistCars())
+                {
+                    pnlNoCars.Visible = true;
+                    pnlCars.Visible = false;
+
+                    lblMessage.Text = "<h1>There are no cars linked to " + this.GetCity().Name + ".</h1>";
+
+                    return;
+                }
+
                 LoadCars();
             }
         }
@@ -27,14 +45,14 @@ namespace CarRenter
         {
             try
             {
-                // Get selected car id
+                // Get selected CarID
                 int carId = Convert.ToInt32(drpCar.SelectedValue);
 
                 // Get selected return date
                 DateTime returnDate = cldReturnDate.SelectedDate;
 
                 // Get current city id
-                int cityId = GetCityID(Int32.Parse(Session["LoggedInId"].ToString()));
+                int cityId = GetCity().CityId;
 
                 // Add a new rental and update car's availability
                 using (var ctx = new CarRenterContext())
@@ -58,12 +76,9 @@ namespace CarRenter
 
         private void LoadCars()
         {
-            // Get current car's city id
-            int cityId = this.GetCityID(Int32.Parse(Session["LoggedInId"].ToString()));
-
             using (var ctx = new CarRenterContext())
             {
-                var cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available == true).ToList();
+                var cars = ctx.Cars.Where(c => c.CityId == this.GetCity().CityId && c.Available == true).ToList();
 
                 foreach (var car in cars)
                 {
@@ -83,11 +98,25 @@ namespace CarRenter
             }
         }
 
-        private int GetCityID(int agencyId)
+        private bool ExistCars()
         {
             using (var ctx = new CarRenterContext())
             {
-                return ctx.Agencies.Where(a => a.AgencyId == agencyId).Select(a => a.CityId).FirstOrDefault();
+                return ctx.Cars.Where(c => c.CityId == this.GetCity().CityId && c.Available).Count() > 0;
+            }
+        }
+
+        private City GetCity()
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                var city = (from c in ctx.Cities
+                            where c.CityId == (from a in ctx.Agencies
+                                               where a.AgencyId == this.AgencyID
+                                               select a.CityId).FirstOrDefault()
+                            select c).FirstOrDefault();
+
+                return city;
             }
         }
 
@@ -95,9 +124,7 @@ namespace CarRenter
         {
             using (var ctx = new CarRenterContext())
             {
-                int carId = Int32.Parse(drpCar.SelectedValue);
-
-                var car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
+                var car = ctx.Cars.Where(c => c.CarId == Int32.Parse(drpCar.SelectedValue)).FirstOrDefault();
 
                 if (car != null)
                 {
