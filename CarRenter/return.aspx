@@ -23,10 +23,6 @@
         </tr>
         <tr>
             <td>
-                <asp:Label runat="server">Total Price: </asp:Label>
-                <asp:Label runat="server" ID="lblPrice"></asp:Label>
-            </td>
-            <td>
                 <asp:Button runat="server" ID="btnReturn" Text="Return" OnClick="btnReturn_Click" />
             </td>
         </tr>

@@ -73,8 +73,9 @@ namespace CarRenter
                         // Multiply total days by daily price
                         double totalPrice = totalDays * DAILY_PRICE;
     
-                        // Update car's availabity
+                        // Update car's data
                         var car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
+                        car.CityId = this.GetCity().CityId;
                         car.Available = true;
 
                         // Update rental's data
