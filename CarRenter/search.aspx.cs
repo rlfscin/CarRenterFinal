@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CarRenter.Models;
@@ -10,12 +8,20 @@ namespace CarRenter
 {
     public partial class search : System.Web.UI.Page
     {
+        #region [ Events ]
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["LoggedInId"] == null)
+            {
+                // Return to home page
+                Response.Redirect("home.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 this.LoadCars();
-                this.LoadRentalLog();
+                this.LoadRentalData(Int32.Parse(drpCar.SelectedValue));
             }
         }
 
@@ -36,13 +42,19 @@ namespace CarRenter
             }
         }
 
-        private void LoadRentalLog()
+        protected void drpCar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadRentalData(Int32.Parse(drpCar.SelectedValue));
+        }
+
+        #endregion
+
+        #region [ Methods ]
+
+        private void LoadRentalData(int carId)
         {
             using (var ctx = new CarRenterContext())
             {
-                // Store selected CarId
-                var carId = Int32.Parse(drpCar.SelectedValue);
-
                 // Retrieve rental information
                 var query = from r in ctx.Rentals
                             where r.CarId == carId
@@ -59,9 +71,6 @@ namespace CarRenter
             }
         }
 
-        protected void drpCar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.LoadRentalLog();
-        }
+        #endregion
     }
 }

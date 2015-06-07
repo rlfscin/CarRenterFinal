@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CarRenter.Models;
@@ -10,6 +8,8 @@ namespace CarRenter
 {
     public partial class home : System.Web.UI.Page
     {
+        #region [ Events ]
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -18,6 +18,15 @@ namespace CarRenter
                 this.LoadCars(Int32.Parse(ddCity.SelectedValue));
             }
         }
+
+        protected void ddCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadCars(Int32.Parse(ddCity.SelectedValue));
+        }
+
+        #endregion
+
+        #region [ Methods ]
 
         private void LoadCars(int cityId)
         {
@@ -45,9 +54,6 @@ namespace CarRenter
             }
         }
 
-        protected void ddCity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.LoadCars(Convert.ToInt32(ddCity.SelectedValue));
-        }
+        #endregion
     }
 }

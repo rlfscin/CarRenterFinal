@@ -14,7 +14,7 @@
                 <asp:DropDownList ID="drpCar" runat="server" AutoPostBack="true" OnSelectedIndexChanged="drpCar_SelectedIndexChanged" />
             </td>
             <td>
-                <asp:Calendar runat="server" ID="cldReturnDate"></asp:Calendar>
+                <asp:Calendar runat="server" ID="cldReturnDate" OnDayRender="cldReturnDate_DayRender"></asp:Calendar>
             </td>
         </tr>
         <tr>

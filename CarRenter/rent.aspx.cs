@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CarRenter.Models;
@@ -12,6 +10,8 @@ namespace CarRenter
     {
         private int AgencyID;
 
+        #region [ Events ]
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["LoggedInId"] == null)
@@ -21,22 +21,19 @@ namespace CarRenter
             }
             else
             {
-                // Store AgencyID value into a local variable coming from user's session
+                // Store AgencyID value coming from user's session
                 this.AgencyID = Int32.Parse(Session["LoggedInId"].ToString());
             }
 
             if (!Page.IsPostBack)
             {
-                if (this.ExistCarsToRent())
+                if (Request.QueryString["carId"] != null)
                 {
-                    LoadCars();
+                    LoadCar(Int32.Parse(Request.QueryString["carId"]));
                 }
                 else
                 {
-                    pnlMessage.Visible = true;
-                    pnlCars.Visible = false;
-
-                    lblMessage.Text = "<h1>There are no cars linked to " + this.GetCity().Name + ".</h1>";
+                    LoadCars();
                 }
             }
         }
@@ -93,13 +90,35 @@ namespace CarRenter
             }
         }
 
+        protected void cldReturnDate_DayRender(object sender, DayRenderEventArgs e)
+        {
+            if (e.Day.Date < DateTime.Today)
+            {
+                e.Day.IsSelectable = false;
+            }
+        }
+
+        #endregion
+
+        #region [ Methods ]
+
         private void LoadCars()
         {
             using (var ctx = new CarRenterContext())
             {
                 int cityId = this.GetCity().CityId;
 
-                var cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available == true).ToList();
+                var cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available).ToList();
+
+                if (cars.Count < 1)
+                {
+                    pnlMessage.Visible = true;
+                    pnlCars.Visible = false;
+
+                    lblMessage.Text = "<h1>There are no cars linked to " + this.GetCity().Name + ".</h1>";
+
+                    return;
+                }
 
                 foreach (var car in cars)
                 {
@@ -116,6 +135,36 @@ namespace CarRenter
                     lblCar.Text = cars[0].Name;
                     lblStatus.Text = cars[0].Available ? "Available" : "Unavailable";
                 }
+            }
+        }
+
+        private void LoadCar(int carId)
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                var car = (from c in ctx.Cars
+                           where c.CarId == carId && c.Available
+                           select c).FirstOrDefault();
+
+                if (car == null)
+                {
+                    pnlMessage.Visible = true;
+                    pnlCars.Visible = false;
+
+                    lblMessage.Text = "<h1>The car is not available to rent.</h1>";
+
+                    return;
+                }
+
+                ListItem li = new ListItem();
+                li.Text = car.Name;
+                li.Value = car.CarId.ToString();
+
+                drpCar.Items.Add(li);
+
+                imgCar.ImageUrl = car.Image;
+                lblCar.Text = car.Name;
+                lblStatus.Text = car.Available ? "Available" : "Unavailable";
             }
         }
 
@@ -142,5 +191,7 @@ namespace CarRenter
                 return city;
             }
         }
+
+        #endregion
     }
 }

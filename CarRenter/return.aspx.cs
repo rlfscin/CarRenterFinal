@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CarRenter.Models;
@@ -11,8 +9,11 @@ namespace CarRenter
     public partial class _return : System.Web.UI.Page
     {
         private const double DAILY_PRICE = 50.0;
+        private const double EXTRA_FEE = 25.0;
 
         private int AgencyID;
+
+        #region [ Events ]
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +24,7 @@ namespace CarRenter
             }
             else
             {
-                // Store AgencyID value into a local variable coming from user's session
+                // Store AgencyID value coming from user's session
                 this.AgencyID = Int32.Parse(Session["LoggedInId"].ToString());
             }
 
@@ -49,7 +50,7 @@ namespace CarRenter
             {
                 using (var ctx = new CarRenterContext())
                 {
-                    // Store selected CarID
+                    // Get selected CarID
                     int carId = Int32.Parse(drpCar.SelectedValue);
 
                     // Get last car's rental
@@ -72,7 +73,13 @@ namespace CarRenter
 
                         // Multiply total days by daily price
                         double totalPrice = totalDays * DAILY_PRICE;
-    
+
+                        // Calculate extra fee
+                        double extraFee = 0.0;
+
+                        if ((currentDate - rental.ReturnDate).Days > 0)
+                            extraFee = (currentDate - rental.ReturnDate).Days * EXTRA_FEE;
+
                         // Update car's data
                         var car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
                         car.CityId = this.GetCity().CityId;
@@ -82,20 +89,22 @@ namespace CarRenter
                         rental.ReturnDate = currentDate;
                         rental.CityId = this.GetCity().CityId;
 
+                        // Save changes in the database
                         ctx.SaveChanges();
 
                         // Show the price on the screen
                         pnlCars.Visible = false;
                         pnlMessage.Visible = true;
 
-                        lblMessage.Text = "<h1>The car has been succesfully returned!</h1></br></br>";
+                        lblMessage.Text = "<h1>The car has been succesfully returned!</h1></br>";
                         lblMessage.Text += "<h1>Total Price: " + totalPrice.ToString("C") + "</h1>";
+                        lblMessage.Text += "<h1>Extra Fee: " + extraFee.ToString("C") + "</h1>";
                     }
                 }
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -115,6 +124,10 @@ namespace CarRenter
                 }
             }
         }
+
+        #endregion
+
+        #region [ Methods ]
 
         private bool ExistCarsToReturn()
         {
@@ -163,5 +176,7 @@ namespace CarRenter
                 return city;
             }
         }
+
+        #endregion
     }
 }
