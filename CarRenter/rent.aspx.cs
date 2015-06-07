@@ -27,17 +27,17 @@ namespace CarRenter
 
             if (!Page.IsPostBack)
             {
-                if (!this.ExistCars())
+                if (this.ExistCarsToRent())
                 {
-                    pnlNoCars.Visible = true;
+                    LoadCars();
+                }
+                else
+                {
+                    pnlMessage.Visible = true;
                     pnlCars.Visible = false;
 
                     lblMessage.Text = "<h1>There are no cars linked to " + this.GetCity().Name + ".</h1>";
-
-                    return;
                 }
-
-                LoadCars();
             }
         }
 
@@ -45,40 +45,61 @@ namespace CarRenter
         {
             try
             {
-                // Get selected CarID
-                int carId = Convert.ToInt32(drpCar.SelectedValue);
-
-                // Get selected return date
-                DateTime returnDate = cldReturnDate.SelectedDate;
-
-                // Get current city id
-                int cityId = GetCity().CityId;
-
-                // Add a new rental and update car's availability
-                using (var ctx = new CarRenterContext())
+                if (Page.IsValid)
                 {
-                    Rental r = ctx.Rentals.Create();
-                    r.CarId = carId;
-                    r.CityId = cityId;
-                    r.RentDate = DateTime.Now;
-                    r.ReturnDate = returnDate;
+                    using (var ctx = new CarRenterContext())
+                    {
+                        // Add new rental
+                        Rental r = ctx.Rentals.Create();
+                        r.CarId = Int32.Parse(drpCar.SelectedValue);
+                        r.CityId = GetCity().CityId;
+                        r.RentDate = DateTime.Now;
+                        r.ReturnDate = cldReturnDate.SelectedDate;
 
-                    ctx.Rentals.Add(r);
+                        ctx.Rentals.Add(r);
 
-                    Car car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
-                    car.Available = false;
+                        // Update car's availability
+                        Car car = ctx.Cars.Where(c => c.CarId == r.CarId).FirstOrDefault();
+                        car.Available = false;
 
-                    ctx.SaveChanges();
+                        // Save changes in the database
+                        ctx.SaveChanges();
+
+                        // Show confirmation message
+                        pnlCars.Visible = false;
+                        pnlMessage.Visible = true;
+
+                        lblMessage.Text = "<h1>The car " + car.Name + " has been succesfully rented!</h1>";
+                    }
                 }
             }
             catch (Exception) { }
+        }
+
+        protected void drpCar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                int carId = Int32.Parse(drpCar.SelectedValue);
+
+                var car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
+
+                if (car != null)
+                {
+                    imgCar.ImageUrl = car.Image;
+                    lblCar.Text = car.Name;
+                    lblStatus.Text = car.Available ? "Available" : "Unavailable";
+                }
+            }
         }
 
         private void LoadCars()
         {
             using (var ctx = new CarRenterContext())
             {
-                var cars = ctx.Cars.Where(c => c.CityId == this.GetCity().CityId && c.Available == true).ToList();
+                int cityId = this.GetCity().CityId;
+
+                var cars = ctx.Cars.Where(c => c.CityId == cityId && c.Available == true).ToList();
 
                 foreach (var car in cars)
                 {
@@ -89,7 +110,7 @@ namespace CarRenter
                     drpCar.Items.Add(li);
                 }
 
-                if (cars != null)
+                if (cars[0] != null)
                 {
                     imgCar.ImageUrl = cars[0].Image;
                     lblCar.Text = cars[0].Name;
@@ -98,11 +119,13 @@ namespace CarRenter
             }
         }
 
-        private bool ExistCars()
+        private bool ExistCarsToRent()
         {
             using (var ctx = new CarRenterContext())
             {
-                return ctx.Cars.Where(c => c.CityId == this.GetCity().CityId && c.Available).Count() > 0;
+                int cityId = this.GetCity().CityId;
+
+                return ctx.Cars.Where(c => c.CityId == cityId && c.Available).Count() > 0;
             }
         }
 
@@ -117,21 +140,6 @@ namespace CarRenter
                             select c).FirstOrDefault();
 
                 return city;
-            }
-        }
-
-        protected void drpCar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (var ctx = new CarRenterContext())
-            {
-                var car = ctx.Cars.Where(c => c.CarId == Int32.Parse(drpCar.SelectedValue)).FirstOrDefault();
-
-                if (car != null)
-                {
-                    imgCar.ImageUrl = car.Image;
-                    lblCar.Text = car.Name;
-                    lblStatus.Text = car.Available ? "Available" : "Unavailable";
-                }
             }
         }
     }

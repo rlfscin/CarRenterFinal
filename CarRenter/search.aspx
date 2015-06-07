@@ -6,7 +6,7 @@
         <tr>
             <td>
                 Car:
-                <asp:DropDownList runat="server" ID="drpCar"></asp:DropDownList>
+                <asp:DropDownList runat="server" ID="drpCar" AutoPostBack="true" OnSelectedIndexChanged="drpCar_SelectedIndexChanged"></asp:DropDownList>
             </td>
             <td>
                 <div class="car">
@@ -27,9 +27,9 @@
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# CityId.Name %></td>
-                <td><%# RentDate %></td>
-                <td><%# ReturnDate %></td>
+                <td><%# Eval("City")%></td>
+                <td><%# Eval("RentDate") %></td>
+                <td><%# Eval("ReturnDate") %></td>
             </tr>
         </ItemTemplate>
         <FooterTemplate></table></FooterTemplate>

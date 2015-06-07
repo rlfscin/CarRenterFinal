@@ -76,13 +76,13 @@ namespace CarRenter {
         protected global::System.Web.UI.WebControls.Button btnRent;
         
         /// <summary>
-        /// pnlNoCars control.
+        /// pnlMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNoCars;
+        protected global::System.Web.UI.WebControls.Panel pnlMessage;
         
         /// <summary>
         /// lblMessage control.

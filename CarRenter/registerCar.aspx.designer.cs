@@ -22,13 +22,22 @@ namespace CarRenter {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// ddlCity control.
+        /// reqName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCity;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqName;
+        
+        /// <summary>
+        /// drpCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpCity;
         
         /// <summary>
         /// fuImage control.
@@ -38,6 +47,15 @@ namespace CarRenter {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fuImage;
+        
+        /// <summary>
+        /// reqImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqImage;
         
         /// <summary>
         /// btnRegister control.

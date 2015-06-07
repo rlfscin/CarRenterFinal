@@ -16,6 +16,13 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtName"></asp:TextBox>
+                    <asp:RequiredFieldValidator runat="server" 
+                                                ID="reqName"
+                                                ControlToValidate="txtName" 
+                                                ErrorMessage="Car's name required" 
+                                                EnableClientScript="true"
+                                                ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -23,7 +30,7 @@
                     <label>City: </label>
                 </td>
                 <td>
-                    <asp:DropDownList runat="server" ID="ddlCity">
+                    <asp:DropDownList runat="server" ID="drpCity">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -32,12 +39,19 @@
                     <label>Image: </label>
                 </td>
                 <td>
-                    <asp:FileUpload runat="server" ID="fuImage"/>
+                    <asp:FileUpload runat="server" ID="fuImage" AllowMultiple="false"/>
+                    <asp:RequiredFieldValidator runat="server" 
+                                                ID="reqImage"
+                                                ControlToValidate="fuImage" 
+                                                EnableClientScript="true"
+                                                ErrorMessage="Car's image required" 
+                                                ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button runat="server" ID="btnRegister" Text="Register"/>
+                    <asp:Button runat="server" ID="btnRegister" Text="Register" OnClick="btnRegister_Click"/>
                 </td>
             </tr>
         </table>

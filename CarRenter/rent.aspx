@@ -35,7 +35,7 @@
         </table>
     </asp:Panel>
     
-    <asp:Panel runat="server" ID="pnlNoCars" Visible="false">
+    <asp:Panel runat="server" ID="pnlMessage" Visible="false">
         <asp:Label runat="server" ID="lblMessage"></asp:Label>
     </asp:Panel>
 </asp:Content>

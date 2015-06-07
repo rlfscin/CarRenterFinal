@@ -15,7 +15,7 @@ namespace CarRenter
             if (!Page.IsPostBack)
             {
                 this.LoadCities();
-                this.LoadCars(Convert.ToInt32(ddCity.SelectedValue));
+                this.LoadCars(Int32.Parse(ddCity.SelectedValue));
             }
         }
 
