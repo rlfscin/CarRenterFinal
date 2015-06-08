@@ -100,3 +100,8 @@ li[id^="li"]{
     float: left;
     width: 100%;
 }
+
+#lblGreeting{
+    font-size: 18pt;
+    color: #444;
+}
