@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CarRenter.Models;
@@ -10,28 +8,19 @@ namespace CarRenter
 {
     public partial class singUp : System.Web.UI.Page
     {
+        #region [ Events ]
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["LoggedInId"] == null)
+            {
+                // Return to home page
+                Response.Redirect("home.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 this.LoadCities();
-            }
-        }
-
-        private void LoadCities()
-        {
-            using (var ctx = new CarRenterContext())
-            {
-                var cities = ctx.Cities.ToList();
-
-                foreach (var city in cities)
-                {
-                    ListItem li = new ListItem();
-                    li.Text = city.Name;
-                    li.Value = city.CityId.ToString();
-
-                    drpCity.Items.Add(li);
-                }
             }
         }
 
@@ -65,10 +54,33 @@ namespace CarRenter
                     ctx.SaveChanges();
                 }
             }
-            catch (Exception) 
+            catch (Exception)
             {
- 
+
             }
         }
+
+        #endregion
+
+        #region [ Methods ]
+
+        private void LoadCities()
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                var cities = ctx.Cities.ToList();
+
+                foreach (var city in cities)
+                {
+                    ListItem li = new ListItem();
+                    li.Text = city.Name;
+                    li.Value = city.CityId.ToString();
+
+                    drpCity.Items.Add(li);
+                }
+            }
+        }
+
+        #endregion
     }
 }

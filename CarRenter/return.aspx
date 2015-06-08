@@ -3,31 +3,34 @@
     <link href="style/return.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <table>
+    <asp:Panel runat="server" ID="pnlCars" Visible="true">>
+        <table>
         <tr>
             <td><h2>Car: </h2></td>
             <td><h2>Car Detail: </h2></td>
         </tr>
         <tr>
             <td>
-                <asp:DropDownList ID="drpCar" runat="server" AutoPostBack="true" />
+                <asp:DropDownList ID="drpCar" runat="server" AutoPostBack="true" OnSelectedIndexChanged="drpCar_SelectedIndexChanged" />
             </td>
             <td>
                 <div class="car">
-                    <asp:Image runat="server" ID="Image1" CssClass="imgHomeCar"/>
-                    <asp:Label runat="server" ID="Label1"></asp:Label>
-                    <asp:Label runat="server" ID="Label2"></asp:Label>
+                    <asp:Image runat="server" ID="imgCar" CssClass="imgHomeCar"/>
+                    <asp:Label runat="server" ID="lblCar"></asp:Label>
+                    <asp:Label runat="server" ID="lblStatus"></asp:Label>
                 </div>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Label runat="server" ID="lblPrice">Price: </asp:Label>
-            </td>
-            <td>
-                <asp:Button runat="server" ID="btnRent" Text="Rent" />
+                <asp:Button runat="server" ID="btnReturn" Text="Return" OnClick="btnReturn_Click" />
             </td>
         </tr>
 
-    </table>
+        </table>
+    </asp:Panel>
+
+    <asp:Panel runat="server" ID="pnlMessage" Visible="false">
+        <asp:Label runat="server" ID="lblMessage"></asp:Label>
+    </asp:Panel>
 </asp:Content>
