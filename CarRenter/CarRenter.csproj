@@ -103,6 +103,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\menu.js" />
     <Content Include="scripts\sign.js" />
+    <Content Include="search.aspx" />
     <Content Include="signIn.aspx" />
     <Content Include="singUp.aspx" />
     <Content Include="style\header.css" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="return.aspx.designer.cs">
       <DependentUpon>return.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
     </Compile>
     <Compile Include="signIn.aspx.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
