@@ -27,6 +27,10 @@ namespace CarRenter
                     // Redirect to home page
                     Response.Redirect("home.aspx");
                 }
+                else
+                {
+                    lblError.Text = "The username and password are invalid";
+                }
             }
         }
     }

@@ -38,3 +38,7 @@ h2{
 #content > table{
     margin-top: 50px;
 }
+
+#Content_pnlMessage{
+    margin: 20px;
+}

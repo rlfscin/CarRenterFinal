@@ -35,7 +35,9 @@
                 </td>
             </tr>
             <tr>
-                <td id="error"></td>
+                <td colspan="2">
+                   <asp:Label runat="server" ID="lblError"></asp:Label> 
+                </td>
             </tr>
         </table>
     </div>
