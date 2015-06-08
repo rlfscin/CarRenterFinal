@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="search.aspx.cs" Inherits="CarRenter.search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="style/search.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <table>
@@ -18,7 +19,7 @@
         </tr>
     </table>
     <asp:Repeater runat="server" ID="lstRents">
-        <HeaderTemplate><table>
+        <HeaderTemplate><table id="tbData">
             <tr>
                 <td>City</td>
                 <td>Rent Date</td>
