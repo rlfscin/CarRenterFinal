@@ -22,6 +22,7 @@ namespace CarRenter
                 // Logged
                 this.ShowMenus(true);
 
+                // Display greeting
                 this.LoadGreeting();
             }
         }
@@ -50,8 +51,10 @@ namespace CarRenter
         {
             using (var ctx = new CarRenterContext())
             {
+                // Get AgencyId stored in the user's session
                 int agencyId = Int32.Parse(Session["LoggedInId"].ToString());
 
+                // Get UserName and City linked to the AgencyId
                 var agency = (from a in ctx.Agencies
                               where a.AgencyId == agencyId
                               select new
@@ -62,6 +65,7 @@ namespace CarRenter
 
                 if (agency != null)
                 {
+                    // Display user's information on the screen
                     lblGreeting.Text = "Hello " + agency.UserName + ", from " + agency.City + "!";
                 }
             }

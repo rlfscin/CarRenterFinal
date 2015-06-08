@@ -11,9 +11,9 @@
             </td>
             <td>
                 <div class="car">
-                    <asp:Image runat="server" ID="Image1" CssClass="imgHomeCar"/>
-                    <asp:Label runat="server" ID="Label1"></asp:Label>
-                    <asp:Label runat="server" ID="Label2"></asp:Label>
+                    <asp:Image runat="server" ID="imgCar" CssClass="imgHomeCar"/>
+                    <asp:Label runat="server" ID="lblCar"></asp:Label>
+                    <asp:Label runat="server" ID="lblStatus"></asp:Label>
                 </div>
             </td>
         </tr>

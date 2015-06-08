@@ -51,6 +51,29 @@ namespace CarRenter
 
                     ddCity.Items.Add(li);
                 }
+
+                if (Session["LoggedInId"] != null)
+                {
+                    ddCity.SelectedValue = this.GetCity().CityId.ToString();
+                }
+            }
+        }
+
+        private City GetCity()
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                // Get AgencyId stored in the user's session
+                int agencyId = Int32.Parse(Session["LoggedInId"].ToString());
+
+                // Get the city linked to the AgencyId
+                var city = (from c in ctx.Cities
+                            where c.CityId == (from a in ctx.Agencies
+                                               where a.AgencyId == agencyId
+                                               select a.CityId).FirstOrDefault()
+                            select c).FirstOrDefault();
+
+                return city;
             }
         }
 
