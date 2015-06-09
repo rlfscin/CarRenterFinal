@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CarRenter.Models;
 
 namespace CarRenter
 {
@@ -20,6 +21,9 @@ namespace CarRenter
             {
                 // Logged
                 this.ShowMenus(true);
+
+                // Display greeting
+                this.LoadGreeting();
             }
         }
 
@@ -31,6 +35,7 @@ namespace CarRenter
             signUp.Visible = isLogged;
             signOut.Visible = isLogged;
             logged.Visible = isLogged;
+            lblGreeting.Visible = isLogged;
         }
 
         protected void btnSignout_Click(object sender, EventArgs e)
@@ -40,6 +45,30 @@ namespace CarRenter
 
             // Redirect to home page
             Response.Redirect("home.aspx");
+        }
+
+        private void LoadGreeting()
+        {
+            using (var ctx = new CarRenterContext())
+            {
+                // Get AgencyId stored in the user's session
+                int agencyId = Int32.Parse(Session["LoggedInId"].ToString());
+
+                // Get UserName and City linked to the AgencyId
+                var agency = (from a in ctx.Agencies
+                              where a.AgencyId == agencyId
+                              select new
+                              {
+                                  UserName = a.UserName,
+                                  City = (from c in ctx.Cities where c.CityId == a.CityId select c.Name).FirstOrDefault()
+                              }).FirstOrDefault();
+
+                if (agency != null)
+                {
+                    // Display user's information on the screen
+                    lblGreeting.Text = "Hello " + agency.UserName + ", from " + agency.City + "!";
+                }
+            }
         }
     }
 }

@@ -22,31 +22,31 @@ namespace CarRenter {
         protected global::System.Web.UI.WebControls.DropDownList drpCar;
         
         /// <summary>
-        /// Image1 control.
+        /// imgCar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Image imgCar;
         
         /// <summary>
-        /// Label1 control.
+        /// lblCar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblCar;
         
         /// <summary>
-        /// Label2 control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
         /// lstRents control.

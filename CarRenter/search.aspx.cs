@@ -39,12 +39,33 @@ namespace CarRenter
 
                     drpCar.Items.Add(li);
                 }
+
+                if (cars[0] != null)
+                {
+                    imgCar.ImageUrl = cars[0].Image;
+                    lblCar.Text = cars[0].Name;
+                    lblStatus.Text = cars[0].Available ? "Available" : "Unavailable";
+                }
             }
         }
 
         protected void drpCar_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.LoadRentalData(Int32.Parse(drpCar.SelectedValue));
+
+            using (var ctx = new CarRenterContext())
+            {
+                int carId = Int32.Parse(drpCar.SelectedValue);
+
+                var car = ctx.Cars.Where(c => c.CarId == carId).FirstOrDefault();
+
+                if (car != null)
+                {
+                    imgCar.ImageUrl = car.Image;
+                    lblCar.Text = car.Name;
+                    lblStatus.Text = car.Available ? "Available" : "Unavailable";
+                }
+            }
         }
 
         #endregion

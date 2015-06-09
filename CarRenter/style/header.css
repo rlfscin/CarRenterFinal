@@ -102,6 +102,8 @@ li[id^="li"]{
 }
 
 #lblGreeting{
-    font-size: 18pt;
+    font-size: 16pt;
+    margin: 20px;
+    display: block;
     color: #444;
 }
