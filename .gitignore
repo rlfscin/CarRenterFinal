@@ -64,3 +64,6 @@ CarRenter/bin/CarRenter.dll
 *.dll
 *.dll
 *.dll
+*.dll
+*.pdb
+*.dll

@@ -110,6 +110,7 @@
     <Content Include="style\home.css" />
     <Content Include="style\rent.css" />
     <Content Include="style\return.css" />
+    <Content Include="style\search.css" />
     <Content Include="style\sign.css" />
     <Content Include="Web.config" />
   </ItemGroup>
