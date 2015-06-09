@@ -27,7 +27,7 @@
             </tr>
         </HeaderTemplate>
         <ItemTemplate>
-            <tr>
+            <tr">
                 <td><%# Eval("City")%></td>
                 <td><%# Eval("RentDate") %></td>
                 <td><%# Eval("ReturnDate") %></td>
